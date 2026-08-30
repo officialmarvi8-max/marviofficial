@@ -380,7 +380,7 @@
       <div class="crown-divider"><svg viewBox="0 0 24 24"><path d="M2 18h20l-2-9-5 5-3-9-3 9-5-5z"/></svg></div>
       <p>Our first drop is being finished by hand as we speak. Message us on WhatsApp to be the first to see it, or to ask about fabric, sizing and pricing today.</p>
     </div>
-    <div class="cat-grid">
+    <div class="cat-grid" id="collectionGrid">
       <div class="cat-card">
         <div class="soon-ribbon">Coming Soon</div>
         <div class="cat-swatch swatch-1">
@@ -420,7 +420,7 @@
 
 <section id="sale">
   <div class="wrap">
-    <div class="sale-band">
+    <div class="sale-band" id="saleFallback">
       <div>
         <span class="eyebrow">Sale</span>
         <h2>Special prices, limited time.</h2>
@@ -428,6 +428,7 @@
       </div>
       <a class="btn btn-gold" href="https://wa.me/923713314505?text=Hi!%20Please%20notify%20me%20when%20the%20Marvi%20Official%20sale%20starts." target="_blank" rel="noopener">Notify Me on WhatsApp →</a>
     </div>
+    <div class="cat-grid" id="saleGrid" style="display:none; margin-top:26px;"></div>
   </div>
 </section>
 
@@ -523,6 +524,7 @@
   <svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.39 1.26 4.81L2 22l5.42-1.35a9.87 9.87 0 004.62 1.15h.01c5.46 0 9.9-4.45 9.9-9.91C21.95 6.45 17.5 2 12.04 2zm5.79 14.13c-.24.68-1.4 1.3-1.93 1.35-.5.05-1.1.07-1.78-.11-.41-.11-.94-.3-1.62-.59-2.85-1.23-4.71-4.1-4.85-4.29-.14-.19-1.16-1.54-1.16-2.94s.73-2.09 1-2.38c.26-.28.57-.35.76-.35.19 0 .38 0 .55.01.17.01.41-.07.64.49.24.57.81 1.97.88 2.11.07.14.12.31.02.5-.09.19-.14.31-.28.47-.14.17-.29.37-.42.5-.14.14-.28.29-.12.57.16.28.71 1.17 1.52 1.9 1.05.94 1.93 1.23 2.21 1.37.28.14.44.12.6-.07.17-.19.71-.83.9-1.11.19-.28.38-.24.64-.14.26.09 1.66.78 1.94.93.28.14.47.21.53.33.07.12.07.68-.17 1.36z"/></svg>
 </a>
 
+<script src="products.js"></script>
 <script>
   const menuToggle = document.getElementById('menuToggle');
   const mobilePanel = document.getElementById('mobilePanel');
@@ -532,6 +534,46 @@
   mobilePanel.querySelectorAll('a').forEach(a => {
     a.addEventListener('click', () => mobilePanel.classList.remove('open'));
   });
+
+  // ---- Auto-render products from products.js (no coding needed to add items) ----
+  function buildCard(p){
+    const msg = encodeURIComponent(p.message || ('Hi! I\'m interested in ' + p.name));
+    const priceHtml = p.salePrice
+      ? `<span style="text-decoration:line-through;color:#9a8aa8;margin-right:8px;">${p.originalPrice || ''}</span><span style="color:#A63D5C;font-weight:500;">${p.salePrice}</span>`
+      : (p.originalPrice || p.price || '');
+    const ribbon = p.limited ? `<div class="soon-ribbon sale-ribbon">Limited Stock</div>` : '';
+    return `
+      <div class="cat-card">
+        ${ribbon}
+        <div class="cat-swatch" style="padding:0;">
+          <img src="${p.image}" alt="${p.name}" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="cat-body">
+          <h3>${p.name}</h3>
+          ${p.description ? `<p>${p.description}</p>` : ''}
+          <p style="margin-bottom:6px;">${priceHtml}</p>
+          ${p.sizes ? `<p style="font-size:12px;color:#9a8aa8;margin-bottom:16px;">Sizes: ${p.sizes}</p>` : ''}
+          <a class="btn btn-primary" href="https://wa.me/923713314505?text=${msg}" target="_blank" rel="noopener">Order on WhatsApp</a>
+        </div>
+      </div>`;
+  }
+
+  try {
+    if (typeof PRODUCTS !== 'undefined' && PRODUCTS.length > 0) {
+      const collectionItems = PRODUCTS.filter(p => p.section === 'collection');
+      const saleItems = PRODUCTS.filter(p => p.section === 'sale');
+
+      if (collectionItems.length > 0) {
+        document.getElementById('collectionGrid').innerHTML = collectionItems.map(buildCard).join('');
+      }
+      if (saleItems.length > 0) {
+        document.getElementById('saleFallback').style.display = 'none';
+        const saleGrid = document.getElementById('saleGrid');
+        saleGrid.style.display = 'grid';
+        saleGrid.innerHTML = saleItems.map(buildCard).join('');
+      }
+    }
+  } catch(e) { /* agar products.js mein koi typo ho to purani site kharab na ho */ }
 </script>
 
 </body>
