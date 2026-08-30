@@ -22,7 +22,7 @@ const PRODUCTS = [
     originalPrice: "Rs. 4,000",
     salePrice: "Rs. 3,200",
     sizes: "Small, Medium",
-    image: "products/suit1.jpg",
+    image: "suit1.jpg",
     section: "sale",
     limited: true,
     message: "Hi! I'm interested in the Two Piece Suit — Noir Bloom."
@@ -34,7 +34,7 @@ const PRODUCTS = [
     originalPrice: "Rs. 4,000",
     salePrice: "Rs. 3,200",
     sizes: "Small, Medium",
-    image: "products/suit2.jpg",
+    image: "suit2.jpg",
     section: "sale",
     limited: true,
     message: "Hi! I'm interested in the Two Piece Long Suit — Ferozi Charm."
@@ -46,7 +46,7 @@ const PRODUCTS = [
     originalPrice: "Rs. 7,000",
     salePrice: "Rs. 5,000",
     sizes: "Medium",
-    image: "products/suit3.jpg",
+    image: "suit3.jpg",
     section: "sale",
     limited: true,
     message: "Hi! I'm interested in the Three Piece Stitched Suit — Noir Embroidered."
@@ -58,7 +58,7 @@ const PRODUCTS = [
     originalPrice: "Rs. 4,000",
     salePrice: "Rs. 3,200",
     sizes: "Small, Medium",
-    image: "products/suit4.jpg",
+    image: "suit4.jpg",
     section: "sale",
     limited: true,
     message: "Hi! I'm interested in the Two Piece Lawn Suit — Mosaic Bloom."
@@ -70,7 +70,7 @@ const PRODUCTS = [
     originalPrice: "Rs. 3,800",
     salePrice: "Rs. 3,000",
     sizes: "Small, Medium",
-    image: "products/suit5.jpg",
+    image: "suit5.jpg",
     section: "sale",
     limited: true,
     message: "Hi! I'm interested in the Two Piece Stitched Suit — Amber Garden."
@@ -82,7 +82,7 @@ const PRODUCTS = [
     originalPrice: "Rs. 3,800",
     salePrice: "Rs. 3,000",
     sizes: "Small, Medium",
-    image: "products/suit6.jpg",
+    image: "suit6.jpg",
     section: "sale",
     limited: true,
     message: "Hi! I'm interested in the Two Piece Stitched Suit — Daisy Collar."
@@ -94,7 +94,7 @@ const PRODUCTS = [
     originalPrice: "Rs. 3,800",
     salePrice: "Rs. 3,000",
     sizes: "Small, Medium",
-    image: "products/suit7.jpg",
+    image: "suit7.jpg",
     section: "sale",
     limited: true,
     message: "Hi! I'm interested in the Two Piece Stitched Suit — Fresh Meadow."
@@ -106,7 +106,7 @@ const PRODUCTS = [
     originalPrice: "Rs. 3,800",
     salePrice: "Rs. 2,500",
     sizes: "Small, Medium",
-    image: "products/suit8.jpg",
+    image: "suit8.jpg",
     section: "sale",
     limited: true,
     message: "Hi! I'm interested in the Two Piece Suit — Zinc Daisy."
@@ -118,7 +118,7 @@ const PRODUCTS = [
     originalPrice: "Rs. 5,500",
     salePrice: "Rs. 4,000",
     sizes: "Medium",
-    image: "products/suit9.jpg",
+    image: "suit9.jpg",
     section: "sale",
     limited: true,
     message: "Hi! I'm interested in the Two Piece Embroidered Suit — Lavender Signature."
@@ -130,7 +130,7 @@ const PRODUCTS = [
     originalPrice: "Rs. 6,000",
     salePrice: "Rs. 4,000",
     sizes: "Medium",
-    image: "products/suit10.jpg",
+    image: "suit10.jpg",
     section: "sale",
     limited: true,
     message: "Hi! I'm interested in the Fully Embroidered Two Piece Suit — Mirror Story."
